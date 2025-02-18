@@ -1,5 +1,5 @@
 from django.db import models
-
+from datetime import date
 # Create your models here.
 
 class Reporter(models.Model):
@@ -9,7 +9,7 @@ class Reporter(models.Model):
         return self.full_name
 
 class Article(models.Model):
-    pub_date = models.DateField()
+    pub_date = models.DateField(default=date.today)
     headline = models.CharField(max_length=200)
     content = models.TextField()
     reporter = models.ForeignKey(Reporter, on_delete=models.CASCADE)
